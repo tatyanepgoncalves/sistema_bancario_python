@@ -4,56 +4,48 @@ Este é um sistema bancário desenvolvido em Python utilizando os princípios da
 
 A estrutura orientada a objetos permite maior organização, reutilização e escalabilidade do código.
 
+---
+
+````bash
+sistema_bancario_python/
+│   
+├── main.py # Ponto de entrada da aplicação
+├── models/ # Definições de classes principais
+│   ├── __init__.py
+│   ├── conta.py # Conta e ContaCorrente
+│   ├── cliente.py # Cliente e PessoaFisica
+│   ├── historico.py # Histórico de transações
+│   ├── contaIterador.py # Iterador para listagem de contas
+│   └── transacao.py # Transações abstratas e concretas
+│
+├── services/  # Operações (casos de uso)
+│   ├── __init__.py
+│   └── operacoes.py # Depósito, saque, extrato, criar cliente/conta
+│   
+├── utils/
+│   ├── __init__.py
+│   ├── decorators.py # Logs e utilidades
+│   ├── helpers.py
+│   └── menu.py # Menu interativo
+│   
+├── main.py
+└── README.md
+````
+
 
 ---
 
-## 🚀 Funcionalidades
+## ⚙️ Funcionalidades
 
-### 🧾 Transações
-- **Depósito**  
-  - Valida valor positivo
-  - Atualiza saldo
-  - Registra no histórico
+- ✅ Cadastro de clientes (Pessoa Física)
+- ✅ Abertura de conta corrente com limite de saque
+- ✅ Realização de **depósitos** e **saques**
+- ✅ Geração de **extrato**
+- ✅ Listagem de contas existentes
+- ✅ Registro de transações com data e hora
+- ✅ Validações como limite de saque, número de saques e saldo
 
 
-- **Saque**  
-  - Limite de 3 saques por conta
-  - Limite de R$500 por saque
-  - Registra no histórico
-  - Valida saldo e regras antes da operação
-
-- **Extrato**  
-  - Exibe todas as transações realizadas por uma conta
-  - Exibe saldo atual
-
----
-### 👤 Cliente
-
-- Cadastro de **Pessoa Física** com:
-  - Nome completo
-  - CPF (único por cliente)
-  - Data de nascimento
-  - Endereço
-
-- Cada cliente pode ter múltiplas contas.
-
----
-
-### 🏦 Conta
-
-- **Conta Corrente** com:
-  - Agência (`0001`)
-  - Número da conta
-  - Cliente titular
-  - Limite de saque
-  - Histórico de transações
-
-- As transações são armazenadas com:
-  - Tipo (`Saque` ou `Depósito`)
-  - Valor
-  - Data e hora da operação
-
----
 
 ## 📋  Menu do Sistema
 
@@ -105,10 +97,21 @@ Ao executar o programa, o menu abaixo será exibido:
 
 ## 🚀 Como Executar
 
-1. Salve o código em um arquivo:  
-   `sistema_bancario.py`
+1. Clone o repositório:
+````bash
+  git clone https://github.com/tatyanepgoncalves/sistema_bancario_python.git
+  cd sistema_bancario_python
+````
 
-2. No terminal, execute:
+2. (Opcional) Crie um ambiente virtual:
+````bash
+  python -m venv venv
+  source venv/bin/activate  # Linux/macOS
+  venv\Scripts\activate     # Windows
+
+````
+
+3. No terminal, execute:
 
 ````bash
   python sistema_bancario.py
@@ -116,15 +119,22 @@ Ao executar o programa, o menu abaixo será exibido:
 
 
 ## 🧭 Melhorias Futuras
-- Persistência de dados com SQLite ou JSON
-- Interface gráfica com Tkinter ou web com Flask/Django
-- Autenticação de clientes com senha
-- Suporte a contas empresariais ou investimentos
-- Relatórios mensais de movimentações
-- Escolha de múltiplas contas por cliente
+- Persistência com banco de dados ou arquivos JSON
+- Interface gráfica (GUI ou Web)
+- Autenticação de usuários
+- Tipagem estática e testes automatizados
 
+## 🧠 Conceitos Aplicados
+- Programação orientada a objetos
+- Princípios de design (abstração, encapsulamento, herança)
+- Iteradores personalizados
+- Decoração de funções (log de operações)
+- Organização modular de código
 
 ## 📝 Observações
 Este projeto é um exercício inicial e está em constante evolução. O objetivo principal é praticar a lógica de programação e os fundamentos da linguagem Python.
+
+## 📝 Licença
+Este projeto está sob a licença MIT.
 
 Feito com 💻 por Tatyane — *Estudante de Sistemas de Informação e Desenvolvedora Full Stack*
