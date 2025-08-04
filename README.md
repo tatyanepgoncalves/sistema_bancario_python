@@ -1,93 +1,130 @@
-# 💰 Sistema Bancário em Python
+# 🏦 Sistema Bancário com Programação Orientada a Objetos (POO) em Python
 
-Este projeto é uma simulação de um sistema bancário desenvolvido em Python, com o objetivo de praticar conceitos de lógica de programação, modularização e uso de funções. Agora o sistema está mais organizado, utilizando funções para cada operação, e com suporte a múltiplos usuários e contas.
+Este é um sistema bancário desenvolvido em Python utilizando os princípios da **Programação Orientada a Objetos**. Ele simula operações bancárias básicas como **depósitos**, **saques**, **emissão de extrato**, além de **cadastro de clientes** e **criação de contas**.  
+
+A estrutura orientada a objetos permite maior organização, reutilização e escalabilidade do código.
+
 
 ---
 
-## 🔧 Funcionalidades Implementadas
+## 🚀 Funcionalidades
 
+### 🧾 Transações
 - **Depósito**  
-  - Adiciona um valor positivo ao saldo da conta.
-  - Registra o valor no extrato
+  - Valida valor positivo
+  - Atualiza saldo
+  - Registra no histórico
+
 
 - **Saque**  
-  Realiza saques com base nas seguintes regras:
-  - Limite máximo por saque: R$500,00
-  - Máximo de 3 saques diários
-  - Saques não podem ultrapassar o saldo disponível
-  - Saques são registrados no extrato
-  - Valida saldo, limite por saque e quantidade de saques
+  - Limite de 3 saques por conta
+  - Limite de R$500 por saque
+  - Registra no histórico
+  - Valida saldo e regras antes da operação
 
 - **Extrato**  
-  - Exibe todas as movimentações realizadas na conta (depósitos e saques).
-  - Exibe o saldo atual.
+  - Exibe todas as transações realizadas por uma conta
+  - Exibe saldo atual
 
--  **Criar usuário (`nu`)**
-  - Cadastro de novo usuário com nome, cpf, data de nascimento e endereço
-  - Impede duplicação de usuários com o mesmo CPF
+---
+### 👤 Cliente
 
--  **Criar conta (`nc`)**
-  - Criação de uma conta bancária vinculada a um usuário existente
-  - Cada conta é composta por número, agência e usuário titular
+- Cadastro de **Pessoa Física** com:
+  - Nome completo
+  - CPF (único por cliente)
+  - Data de nascimento
+  - Endereço
 
-- **Listar Contas (`lc`)**
-  - Lista todas as contas cadastradas com seus dados principais.
+- Cada cliente pode ter múltiplas contas.
 
-- **Sair**  
-  Encerra a execução do sistema.
+---
 
-## 📋 Menu Interativo
+### 🏦 Conta
+
+- **Conta Corrente** com:
+  - Agência (`0001`)
+  - Número da conta
+  - Cliente titular
+  - Limite de saque
+  - Histórico de transações
+
+- As transações são armazenadas com:
+  - Tipo (`Saque` ou `Depósito`)
+  - Valor
+  - Data e hora da operação
+
+---
+
+## 📋  Menu do Sistema
 
 Ao executar o programa, o menu abaixo será exibido:
 
 ````py
 ==================== MENU ==================
-  [d]\tDepositar
-  [s]\tSacar
-  [e]\tExtrato
-  [nc]\tNova conta
-  [lc]\tListar conta
-  [nu]\tNovo usuário
-  [q]\tSair
+  [d] Depositar
+  [s] Sacar
+  [e] Extrato
+  [nc] Nova conta
+  [lc] Listar conta
+  [nu] Novo usuário
+  [q] Sair
 =>
 ````
+---
 
-O usuário pode então escolher uma opção digitando a letra correspondente.
+## 🧱 Arquitetura do Código
+
+- `Cliente`: classe base com composição de contas
+- `PessoaFisica`: herda de `Cliente`
+- `Conta`: classe abstrata base para contas bancárias
+- `ContaCorrente`: herda de `Conta`, com regras específicas
+- `Transacao`: classe abstrata para operações
+  - `Deposito` e `Saque` herdam de `Transacao`
+- `Historico`: registra todas as transações da conta
+
+---
+
+## 💡 Padrões e Princípios Utilizados
+
+- Programação Orientada a Objetos (POO)
+- Abstração com classes base e métodos abstratos (`abc`)
+- Encapsulamento com atributos privados
+- Coesão: cada classe tem uma única responsabilidade
+- Acoplamento reduzido entre cliente e conta
+- Separação clara entre entrada de dados e lógica de negócio
+
+---
+
+## 📚 Requisitos
+
+- Python 3.8 ou superior
+- Executar em terminal (CLI)
+
+---
+
 
 ## 🚀 Como Executar
 
-1. Certifique-se de ter o Python 3 instalado.
-2. Salve o código em um arquivo chamado, por exemplo, `sistema_bancario.py`.
-3. No terminal, execute o arquivo com:
+1. Salve o código em um arquivo:  
+   `sistema_bancario.py`
+
+2. No terminal, execute:
 
 ````bash
   python sistema_bancario.py
 ````
 
-## 🧠 Conceitos Praticados
-- Parâmetros posicionais e nomeados (/, *)
-- Modularização do código
-- Manipulação de listas e dicionários
-- Programação procedural
-- Validação de entrada de dados
 
-## 🛣️ Melhorias Futuras
-
-- Armazenamento persistente (JSON, SQLite)
-- Interface com autenticação por senha
-- Identificação e login de usuários
-- Registro de data/hora das operações
-- Refatoração para Programação Orientada a Objetos
-- Testes unitários com ``unittest`` ou ``pytest``
-
-## ✅ Requisitos
-
-- Python 3.8 ou superior
-- Terminal para execução interativa
+## 🧭 Melhorias Futuras
+- Persistência de dados com SQLite ou JSON
+- Interface gráfica com Tkinter ou web com Flask/Django
+- Autenticação de clientes com senha
+- Suporte a contas empresariais ou investimentos
+- Relatórios mensais de movimentações
+- Escolha de múltiplas contas por cliente
 
 
 ## 📝 Observações
 Este projeto é um exercício inicial e está em constante evolução. O objetivo principal é praticar a lógica de programação e os fundamentos da linguagem Python.
-
 
 Feito com 💻 por Tatyane — *Estudante de Sistemas de Informação e Desenvolvedora Full Stack*
