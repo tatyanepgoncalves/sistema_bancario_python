@@ -1,8 +1,12 @@
-# main.py
-from menu import menu
-from services.operacoes import (
-    depositar, sacar, exibir_extrato, criar_cliente, criar_conta, listar_contas
+from src.services.bank_services import (
+    criar_cliente,
+    criar_conta,
+    depositar,
+    exibir_extrato,
+    listar_contas,
+    sacar,
 )
+from src.ui.menu import menu
 
 
 def main():
@@ -12,22 +16,32 @@ def main():
     while True:
         opcao = menu()
 
-        if opcao == "d": 
+        if opcao == "d":
             depositar(clientes)
-        elif opcao == "s": 
+
+        elif opcao == "s":
             sacar(clientes)
-        elif opcao == "e": 
+
+        elif opcao == "e":
             exibir_extrato(clientes)
-        elif opcao == "nu": 
+
+        elif opcao == "nu":
             criar_cliente(clientes)
-        elif opcao == "nc": 
-            criar_conta(len(contas) + 1, clientes, contas)
-        elif opcao == "lc": 
+
+        elif opcao == "nc":
+            numero_conta = len(contas) + 1
+            criar_conta(numero_conta, clientes, contas)
+
+        elif opcao == "lc":
             listar_contas(contas)
-        elif opcao == "q": 
+
+        elif opcao == "q":
+            print("Saindo do sistema...")
             break
-        else: 
-            print("@@@ Opção inválida! @@@")
+
+        else:
+            print("\n@@@ Operação inválida. @@@")
+
 
 if __name__ == "__main__":
     main()

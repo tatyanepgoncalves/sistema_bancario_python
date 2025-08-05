@@ -1,140 +1,54 @@
-# 🏦 Sistema Bancário com Programação Orientada a Objetos (POO) em Python
+# Sistema Bancário em Python
 
-Este é um sistema bancário desenvolvido em Python utilizando os princípios da **Programação Orientada a Objetos**. Ele simula operações bancárias básicas como **depósitos**, **saques**, **emissão de extrato**, além de **cadastro de clientes** e **criação de contas**.  
+Este é um projeto simples de um sistema bancário desenvolvido em Python. Ele foi criado com o objetivo de demonstrar a aplicação de conceitos de **Programação Orientada a Objetos (POO)**, como herança, abstração, polimorfismo e encapsulamento, além de boas práticas de desenvolvimento como a criação de funções de menu, classes e manipulação de arquivos (simulada em memória).
 
-A estrutura orientada a objetos permite maior organização, reutilização e escalabilidade do código.
+O sistema permite a gestão de clientes e contas correntes, com funcionalidades básicas de depósito, saque e visualização de extrato.
 
----
+## Funcionalidades Principais
 
-````bash
-sistema_bancario_python/
-│   
-├── main.py # Ponto de entrada da aplicação
-├── models/ # Definições de classes principais
-│   ├── __init__.py
-│   ├── conta.py # Conta e ContaCorrente
-│   ├── cliente.py # Cliente e PessoaFisica
-│   ├── historico.py # Histórico de transações
-│   ├── contaIterador.py # Iterador para listagem de contas
-│   └── transacao.py # Transações abstratas e concretas
-│
-├── services/  # Operações (casos de uso)
-│   ├── __init__.py
-│   └── operacoes.py # Depósito, saque, extrato, criar cliente/conta
-│   
-├── utils/
-│   ├── __init__.py
-│   ├── decorators.py # Logs e utilidades
-│   ├── helpers.py
-│   └── menu.py # Menu interativo
-│   
-├── main.py
-└── README.md
-````
+* **Criação de Clientes**: Cadastro de novos clientes (Pessoa Física).
+* **Criação de Contas**: Associação de contas correntes a um cliente existente.
+* **Depósito**: Realiza depósitos em uma conta, com a verificação de valores válidos.
+* **Saque**: Efetua saques de uma conta, respeitando um limite de valor por saque e um número máximo de saques diários.
+* **Extrato**: Exibe o histórico de todas as transações (depósitos e saques) realizadas na conta, incluindo o saldo atual.
+* **Listar Contas**: Mostra todas as contas cadastradas com os detalhes do cliente.
 
+## Estrutura do Código 
 
----
+O projeto é organizado em classes para representar as entidades do sistema:
 
-## ⚙️ Funcionalidades
+* `Cliente`: Classe base para clientes.
+* `PessoaFisica`: Subclasse de `Cliente` para representar clientes pessoa física.
+* `Conta`: Classe base para contas bancárias.
+* `ContaCorrente`: Subclasse de `Conta` com regras específicas de limite de saque e número de saques.
+* `Historico`: Gerencia o histórico de transações de uma conta.
+* `Transacao`, `Saque`, `Deposito`: Classes abstratas e concretas para definir o comportamento das transações.
+* `ContasIterador`: Classe que implementa o protocolo de iteração para exibir as contas.
+* **Funções de Apoio**: Funções como `menu`, `filtrar_cliente`, `recuperar_conta_cliente`, etc., que organizam a lógica de interação com o usuário.
+* **Decoradores**: O decorador `@log_transacao` foi implementado para demonstrar o registro de operações, adicionando um carimbo de data e hora a cada transação.
 
-- ✅ Cadastro de clientes (Pessoa Física)
-- ✅ Abertura de conta corrente com limite de saque
-- ✅ Realização de **depósitos** e **saques**
-- ✅ Geração de **extrato**
-- ✅ Listagem de contas existentes
-- ✅ Registro de transações com data e hora
-- ✅ Validações como limite de saque, número de saques e saldo
+## Como Executar o Projeto
+1.  **Pré-requisitos**: Certifique-se de ter o Python instalado (versão 3.6 ou superior).
 
-
-
-## 📋  Menu do Sistema
-
-Ao executar o programa, o menu abaixo será exibido:
-
-````py
-==================== MENU ==================
-  [d] Depositar
-  [s] Sacar
-  [e] Extrato
-  [nc] Nova conta
-  [lc] Listar conta
-  [nu] Novo usuário
-  [q] Sair
-=>
-````
----
-
-## 🧱 Arquitetura do Código
-
-- `Cliente`: classe base com composição de contas
-- `PessoaFisica`: herda de `Cliente`
-- `Conta`: classe abstrata base para contas bancárias
-- `ContaCorrente`: herda de `Conta`, com regras específicas
-- `Transacao`: classe abstrata para operações
-  - `Deposito` e `Saque` herdam de `Transacao`
-- `Historico`: registra todas as transações da conta
-
----
-
-## 💡 Padrões e Princípios Utilizados
-
-- Programação Orientada a Objetos (POO)
-- Abstração com classes base e métodos abstratos (`abc`)
-- Encapsulamento com atributos privados
-- Coesão: cada classe tem uma única responsabilidade
-- Acoplamento reduzido entre cliente e conta
-- Separação clara entre entrada de dados e lógica de negócio
-
----
-
-## 📚 Requisitos
-
-- Python 3.8 ou superior
-- Executar em terminal (CLI)
-
----
-
-
-## 🚀 Como Executar
-
-1. Clone o repositório:
+2. **Clone o repositório**:
 ````bash
   git clone https://github.com/tatyanepgoncalves/sistema_bancario_python.git
+````
+
+3. **Executar o Script**:
+    Navegue até o diretório do projeto e execute o arquivo principal:
+````bash
   cd sistema_bancario_python
 ````
 
-2. (Opcional) Crie um ambiente virtual:
-````bash
-  python -m venv venv
-  source venv/bin/activate  # Linux/macOS
-  venv\Scripts\activate     # Windows
+## Tecnologias Utilizadas
 
-````
+* **Python**: Linguagem de programação principal.
 
-3. No terminal, execute:
+## Contribuições
 
-````bash
-  python sistema_bancario.py
-````
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma *issue* para relatar bugs ou sugerir novas funcionalidades, ou enviar um *pull request* com suas melhorias.
 
+## Licença
 
-## 🧭 Melhorias Futuras
-- Persistência com banco de dados ou arquivos JSON
-- Interface gráfica (GUI ou Web)
-- Autenticação de usuários
-- Tipagem estática e testes automatizados
-
-## 🧠 Conceitos Aplicados
-- Programação orientada a objetos
-- Princípios de design (abstração, encapsulamento, herança)
-- Iteradores personalizados
-- Decoração de funções (log de operações)
-- Organização modular de código
-
-## 📝 Observações
-Este projeto é um exercício inicial e está em constante evolução. O objetivo principal é praticar a lógica de programação e os fundamentos da linguagem Python.
-
-## 📝 Licença
-Este projeto está sob a licença MIT.
-
-Feito com 💻 por Tatyane — *Estudante de Sistemas de Informação e Desenvolvedora Full Stack*
+Este projeto está licenciado sob a licença [MIT](https://opensource.org/licenses/MIT)
