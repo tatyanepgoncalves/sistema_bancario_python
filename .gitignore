@@ -1,0 +1,59 @@
+# Bytecode do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambientes virtuais
+venv/
+.env/
+.venv/
+env/
+ENV/
+
+# Arquivos de configuração e cache de ferramentas
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Arquivos de IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Configurações específicas do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de teste (caso use pytest)
+htmlcov/
+.tox/
+.coverage
+coverage.xml
+*.cover
+.cache
+nosetests.xml
+test_*.log
+.pytest_cache/
+
+# Pipenv
+Pipfile.lock
+
+# Arquivos do mypy
+.mypy_cache/
+
+# Arquivos do pytest
+.pytest_cache/
+
+# Arquivos do pylint
+.pylint.d/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Arquivos de exportação
+*.bak
+*.swp

@@ -1,12 +1,13 @@
-from abc import ABC, abstractmethod
+from abc import ABC, abstractclassmethod, abstractproperty
+
 
 class Transacao(ABC):
     @property
-    @abstractmethod
+    @abstractproperty
     def valor(self):
         pass
 
-    @abstractmethod
+    @abstractclassmethod
     def registrar(self, conta):
         pass
 
@@ -20,7 +21,9 @@ class Saque(Transacao):
         return self._valor
 
     def registrar(self, conta):
-        if conta.sacar(self.valor):
+        sucesso_transacao = conta.sacar(self.valor)
+
+        if sucesso_transacao:
             conta.historico.adicionar_transacao(self)
 
 
@@ -33,5 +36,7 @@ class Deposito(Transacao):
         return self._valor
 
     def registrar(self, conta):
-        if conta.depositar(self.valor):
+        sucesso_transacao = conta.depositar(self.valor)
+
+        if sucesso_transacao:
             conta.historico.adicionar_transacao(self)
